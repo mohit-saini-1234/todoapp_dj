@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-id(&b9&m@^stryy-3pg*4n!a^zud+ac638epfx--gl206p)6yp'
+SECRET_KEY = 'django-insecure-adb90plb_qzz*j6ya7+gf4s@8q)_+j^0_z0n%dubd62$7#p**7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -31,14 +31,25 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'todo_user',
+    'todo_task',
+    'rolepermissions',
     'django.contrib.admin',
+    'rest_framework',
     'django.contrib.auth',
+    'rest_framework.authtoken',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication'
+    )
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -50,7 +61,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'todo_dj.urls'
-
+ROLEPERMISSIONS_MODULE = 'todo_user.roles'
+ROLEPERMISSIONS_MODULE = 'todo_dj.roles'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
