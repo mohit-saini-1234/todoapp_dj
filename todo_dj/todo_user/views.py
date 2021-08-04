@@ -12,17 +12,7 @@ from rolepermissions.checkers import has_permission
 
 
 
-
-#from django.contrib.contenttypes.models import ContentType
-
-
-
 class UserProfile(APIView):
-    
-    """
-    Manager User Login and other things
-    """
-
     permission_classes = (IsAuthenticated,)
     def get(self, request):
         ser = UserSerializer(request.user)
